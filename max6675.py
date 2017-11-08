@@ -105,16 +105,17 @@ class MAX6675Error(Exception):
 if __name__ == "__main__":
 
     # default example
-    cs_pin = 24
-    clock_pin = 23
-    data_pin = 22
+    cs_pin = 8
+    clock_pin = 11
+    data_pin = 9
     units = "c"
     thermocouple = MAX6675(cs_pin, clock_pin, data_pin, units)
     running = True
     while(running):
         try:            
             try:
-                tc = thermocouple.get()        
+                tc = thermocouple.get()
+                print("tc: {}".format(tc))
             except MAX6675Error as e:
                 tc = "Error: "+ e.value
                 running = False
